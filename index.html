@@ -72,37 +72,30 @@
   </body>
   <script>
     $(function () {
+      console.log('수정');
       function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
       }
 
-      function clickInit() {
-        $(".card__wrap .item").click(function () {
-          if ($(this).hasClass("active")) {
-            $(this).removeClass("active");
-            $("#text").text("");
-          } else {
-            $(".card__wrap .item").removeClass("active");
-            $(this).addClass("active");
-            $("#text").text($(this).attr("data-text"));
-          }
-        });
-      }
-
-      const ar = [0, 1, 2, 3, 4, 5, 6];
-      $("#shu__btn").click(function () {
-        shuffle(ar);
-        for (let i = 0; i < ar.length; i++) {
-          $($(".card__wrap .item").eq(0)).after(
-            $(".card__wrap .item").eq(ar[i])
-          );
-          $($(".card__wrap .item").eq(ar[i])).after(
-            $(".card__wrap .item").eq(0)
-          );
+      $('.card__wrap .item').click(function () {
+        if ($(this).hasClass('active')) {
+          $(this).removeClass('active');
+          $('#text').text('');
+        } else {
+          $('.card__wrap .item').removeClass('active');
+          $(this).addClass('active');
+          $('#text').text($(this).attr('data-text'));
         }
       });
 
-      clickInit();
+      const ar = [0, 1, 2, 3, 4, 5, 6];
+      $('#shu__btn').click(function () {
+        shuffle(ar);
+        for (let i = 0; i < ar.length; i++) {
+          $($('.card__wrap .item').eq(0)).after($('.card__wrap .item').eq(ar[i]));
+          $($('.card__wrap .item').eq(ar[i])).after($('.card__wrap .item').eq(0));
+        }
+      });
     });
   </script>
 </html>
